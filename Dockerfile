@@ -14,7 +14,8 @@ RUN apk --no-cache add --virtual build-dependencies erlang wget ca-certificates 
     rm -rf /etc/ssl
 
 RUN apk --no-cache add erlang-crypto erlang-syntax-tools erlang-parsetools erlang-inets erlang-ssl \
-    erlang-public-key erlang-eunit erlang-asn1 erlang-sasl erlang-erl-interface erlang-dev erlang-xmerl docker
+    erlang-public-key erlang-eunit erlang-asn1 erlang-sasl erlang-erl-interface erlang-dev erlang-xmerl \
+    gcc make libc-dev libgcc
 RUN rm -rf /var/cache/apk/*
 
 RUN mix local.hex --force && mix local.rebar --force
