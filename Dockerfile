@@ -104,7 +104,7 @@ RUN \
   wget --no-check-certificate -O /tmp/helm.tgz https://kubernetes-helm.storage.googleapis.com/helm-${HELM_VERSION}-linux-amd64.tar.gz \
   && tar -zxvf /tmp/helm.tgz -C /tmp \
   && mv /tmp/linux-amd64/helm /bin/helm \
-  && rm -rf /tmp
+  && rm -rf /tmp/*
 
 COPY scripts/ /usr/bin/
 
