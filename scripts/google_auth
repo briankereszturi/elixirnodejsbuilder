@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+. ~/.bashrc
+echo "${GOOGLE_AUTH_JSON}" > /keyconfig.json
+gcloud auth activate-service-account "${GOOGLE_AUTH_EMAIL}" --key-file /keyconfig.json --project "${GOOGLE_PROJECT_ID}"
