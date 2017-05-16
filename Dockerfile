@@ -2,7 +2,7 @@ FROM node:6.10.3
 
 ENV CACHE_BUST 2
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
-ENV ERLANG_VERSION 19.3
+ENV ERLANG_VERSION 18.3.4
 ENV ELIXIR_VERSION 1.4.1
 ENV HELM_VERSION v2.4.1
 ENV PATH $PATH:/opt/elixir-${ELIXIR_VERSION}/bin
@@ -18,8 +18,16 @@ RUN \
   gcc \
   make \
   libc-dev \
+  locales \
 	&& apt-get clean -y \
 	&& rm -rf /var/lib/apt/lists/*
+
+# Set locale
+RUN \
+  export LANG=en_US.UTF-8 \
+  && echo $LANG UTF-8 > /etc/locale.gen \
+  && locale-gen \
+  && update-locale LANG=$LANG
 
 # Install erlang
 RUN \
